@@ -5,19 +5,28 @@ import(
 "os"
 "github.com/gofiber/fiber/v2"
 "github.com/joho/godotenv"
- "gorm.io/driver/mysql"
+"gorm.io/driver/mysql"
  "gorm.io/gorm"
  
 var dbclient*gorm.DB
 func main(){
+
 	//Initialize.fiber
 	app := fiber.New()
 	err := godotenv.Load(".env")
 	if err != nil {
 		log.Fatal("error loading env file")
+}
+
 	}
 	//connnect to DB
-	dsn := os.Getven("DB-DSN")
+	error := godotenv.Load(".env")
+	if error i= nil {
+		log.Fatal("error loading env file")
+		
+	}
+
+	dsn := os.Getenv("DB-DSN")
 
 	dbliient, err  =gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	
