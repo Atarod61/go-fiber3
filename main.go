@@ -13,8 +13,10 @@ func main(){
 
 	//Initialize.fiber
 	app := fiber.New()
+	//Load env file
 	err := godotenv.Load(".env")
 	if err != nil {
+
 		log.Fatal("error loading env file")
 }
 
@@ -30,7 +32,7 @@ func main(){
 
 	dbliient, err  =gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	
-	sqldb, err := dbclient.DB()
+	sqldb, - := dbclient.DB()
 	defer sqldb close()
 	if err != nil {
 		log.Fatal("error connecting to database ")
