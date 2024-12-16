@@ -9,8 +9,15 @@ import (
 func seedusers() {
 
 	dbClient := db.GetDB()
+	// ravesh 1
+	var user models.user
+	user.Email = "test@test.com"
+	user.Username = "test"
+	user.Password = "123456789"
 
-	error := dbClient.create().Error
+	//ravesh 2
+
+	error := dbClient.create(&user).Error
 
 	if err != nil {
 		log.Fatalf("user cannot be added to database")
