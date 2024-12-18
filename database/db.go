@@ -1,6 +1,7 @@
 package db
 
 import (
+	"database/sql"
 	"log"
 
 	"gorm.io/driver/mysql"
@@ -17,6 +18,26 @@ func Connect() {
 	if err != nil {
 		log.Fatal("Error connecting to the database: ", err)
 	}
+
+	// Get the underlying SQL database connection and defer its closure
+	sqlDB,_ := dbClient.DB()
+	err = sqlDB.Ping()
+
+	 err != nil {
+		CloseDB()
+		log.Fatal("Error getting database connection: ", err)
+	}
 	log.Println("Database connected")
 
+}
+func AutoMigrate() {
+	dbClient.AutoMigrate(&models.user{})
+}
+
+func GetDB() *gorm.DB {
+	return dbClient
+}
+func CloseDB(){
+	sqlDB,_ := dbClient.DB()
+	sqlDB.Close()
 }

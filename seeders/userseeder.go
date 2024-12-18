@@ -17,7 +17,7 @@ func seedusers() {
 
 	//ravesh 2
 
-	error := dbClient.create(&user).Error
+	err := dbClient.Create(&user).Error
 
 	if err != nil {
 		log.Fatalf("user cannot be added to database")

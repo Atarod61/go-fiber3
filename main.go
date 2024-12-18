@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 
+	db "github.com/Atarod61/go-fiber3/database"
 	"github.com/gofiber/fiber/v2"
 	"github.com/joho/godotenv"
 )
@@ -19,12 +20,10 @@ func main() {
 		log.Println("Warning: .env file not found. Defaulting to environment variables.")
 	}
 
-	// Get the underlying SQL database connection and defer its closure
-	sqlDB, err := dbClient.DB()
-	if err != nil {
-		log.Fatal("Error getting database connection: ", err)
-	}
-	defer sqlDB.Close()
+	//DB stuff
+	db.Connect()
+	db.AutoMigrate()
+	seeders.seeduser()
 
 	// Set up a simple GET route
 	app.Get("/", func(c *fiber.Ctx) error {
