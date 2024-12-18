@@ -7,11 +7,7 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/joho/godotenv"
-	"gorm.io/driver/mysql"
-	"gorm.io/gorm"
 )
-
-var dbClient *gorm.DB
 
 func main() {
 	// Initialize Fiber
@@ -22,15 +18,6 @@ func main() {
 	if err != nil {
 		log.Println("Warning: .env file not found. Defaulting to environment variables.")
 	}
-
-	// Connect to Database
-	//dsn := os.Getenv("DB_DSN")
-	dsn := "root:21@tcp(localhost:3308)/fiber?charset=utf8mb4&parseTime=True&loc=Local"
-	dbClient, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
-	if err != nil {
-		log.Fatal("Error connecting to the database: ", err)
-	}
-	log.Println("Database connected")
 
 	// Get the underlying SQL database connection and defer its closure
 	sqlDB, err := dbClient.DB()
