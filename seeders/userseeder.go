@@ -10,7 +10,7 @@ func seedusers() {
 
 	dbClient := db.GetDB()
 	// ravesh 1
-	var user models.user
+	var user models.use
 	user.Email = "test@test.com"
 	user.Username = "test"
 	user.Password = "123456789"

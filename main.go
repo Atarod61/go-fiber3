@@ -23,7 +23,7 @@ func main() {
 	//DB stuff
 	db.Connect()
 	db.AutoMigrate()
-	seeders.seeduser()
+	seeders.seedusers()
 
 	// Set up a simple GET route
 	app.Get("/", func(c *fiber.Ctx) error {
