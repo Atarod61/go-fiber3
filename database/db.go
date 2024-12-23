@@ -2,6 +2,8 @@ package db
 
 import (
 	"log"
+	"os"
+
 
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -40,4 +42,8 @@ func GetDB() *gorm.DB {
 func CloseDB() {
 	sqlDB, _ := dbClient.DB()
 	sqlDB.Close()
+}
+file, err := os.Open("file.go") // For read access.
+if err != nil {
+    log.Fatal(err)
 }
