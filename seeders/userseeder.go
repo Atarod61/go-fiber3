@@ -3,11 +3,11 @@ package seeders
 import (
 	"log"
 
-	db "github.com/Atarod61/go-fiber3/database"
-	"github.com/Atarod61/go-fiber3/models"
+	db "go-fiber3/database"
+	"go-fiber3/models"
 )
 
-func seedusers() {
+func SeedUsers() {
 
 	dbClient := db.GetDB()
 	// ravesh 1

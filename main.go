@@ -5,7 +5,10 @@ import (
 	"log"
 	"os"
 
-	db "github.com/Atarod61/go-fiber3/database"
+	db "go-fiber3/database"
+
+	"go-fiber3/seeders"
+
 	"github.com/gofiber/fiber/v2"
 	"github.com/joho/godotenv"
 )
@@ -23,7 +26,7 @@ func main() {
 	//DB stuff
 	db.Connect()
 	db.AutoMigrate()
-	seeders.seedusers()
+	seeders.SeedUsers()
 
 	// Set up a simple GET route
 	app.Get("/", func(c *fiber.Ctx) error {
