@@ -3,30 +3,25 @@ package seeders
 import (
 	"log"
 
-	db "go-fiber3/database"
-	"go-fiber3/models"
+	db "fiberProject/Fiber3/database"
+	"fiberProject/Fiber3/models"
 )
 
 func SeedUsers() {
-
 	dbClient := db.GetDB()
-	// ravesh 1
-	//var user models.use
-	//user.Email = "test@test.com"
-	//user.Username = "test"
-	//user.Password = "123456789"
 
-	//ravesh 2
-	User := models.user{
-		Username : "Atarod61",
-		Password : "123456789",
-		Email : "atarod2017@gmail.com"
+	// Define a user
+	user := models.User{
+		Username: "UserTest1",
+		Password: "1234567891",
+		Email:    "user@domain.com1",
 	}
 
+	// Add the user to the database
 	err := dbClient.Create(&user).Error
-
 	if err != nil {
-		log.Fatalf("user cannot be added to database")
+		log.Fatalf("User cannot be added to the database: %v", err)
 	}
 
+	log.Println("User seeded successfully")
 }
