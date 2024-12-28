@@ -6,7 +6,7 @@ import (
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 
-	"fiberProject/Fiber3/models" // Update the import path based on your project structure
+	"go-fiber3/models" // Update the import path based on your project structure
 )
 
 var dbClient *gorm.DB
