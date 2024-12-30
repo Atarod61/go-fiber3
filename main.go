@@ -6,8 +6,9 @@ import (
 	"os"
 
 	db "go-fiber3/database"
+	"go-fiber3/models"
 
-	"go-fiber3/seeders"
+	//"go-fiber3/seeders"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/joho/godotenv"
@@ -26,13 +27,22 @@ func main() {
 	//DB stuff
 	db.Connect()
 	db.AutoMigrate()
-	seeders.SeedUsers()
+	//seeders.SeedUsers()
 
 	// Set up a simple GET route
 	app.Get("/", func(c *fiber.Ctx) error {
 		return c.Status(fiber.StatusOK).JSON(&fiber.Map{
 			"message": "Everything is working fine",
 		})
+	})
+	app.Get("/add-user", func(c *fiber.Ctx) error {
+		user := models.User{
+			Username: "super-admin",
+			Password: "superadmin@123",
+			Email:    "superadmin@gmail.com",
+		}
+		dbclient := db.GetDB()
+		return dbclient.Create(&user).Error
 	})
 
 	// Start the Fiber app
