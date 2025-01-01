@@ -44,20 +44,20 @@ func main() {
 		dbclient := db.GetDB()
 		return dbclient.Create(&user).Error
 	})
-	app.Get("/delet-user/:id",func(c *fiber.Ctx) error {
-		id : c.Params("id")
-		userId,- := strerrconv.Atoi(id)
-		 user := models.User{
-			Model: gorm.Model{
-				ID: uint(userId),
-			},
-		 }
-		 dbclient := db.GetDB()
-		 dbclient.Model(&user).Tr(
-			err := dbclient.Delete(&user).Error
-            return err
-		 )
-	})
+	//	app.Get("/delet-user/:id",func(c *fiber.Ctx) error {
+	//id : c.Params("id")
+	//userId,- := strerrconv.Atoi(id)
+	// user := models.User{
+	//	Model: gorm.Model{
+	//	ID: uint(userId),
+	//},
+	//	 }
+	// dbclient := db.GetDB()
+	//dbclient.Model(&user).Tr(
+	//	err := dbclient.Delete(&user).Error
+	// return err
+	//)
+	//})
 
 	// Start the Fiber app
 	port := os.Getenv("PORT")
