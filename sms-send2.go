@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"strings"
 )
@@ -13,14 +13,27 @@ func main() {
 		"source=982191099135&destination=989105856973&message=سلام"
 	payload := strings.NewReader(str)
 
-	req, _ := http.NewRequest("POST", url, payload)
+	req, err := http.NewRequest("POST", url, payload)
+	if err != nil {
+		fmt.Println("Error creating request:", err)
+		return
+	}
 
 	req.Header.Add("content-type", "application/x-www-form-urlencoded")
 
-	res, _ := http.DefaultClient.Do(req)
-
+	res, err := http.DefaultClient.Do(req)
+	if err != nil {
+		fmt.Println("Error making request:", err)
+		return
+	}
 	defer res.Body.Close()
-	body, _ := ioutil.ReadAll(res.Body)
+
+	// Replacing ioutil.ReadAll with io.ReadAll
+	body, err := io.ReadAll(res.Body)
+	if err != nil {
+		fmt.Println("Error reading response body:", err)
+		return
+	}
 
 	fmt.Println(res)
 	fmt.Println(string(body))
