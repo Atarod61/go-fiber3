@@ -8,8 +8,6 @@ import (
 	db "go-fiber3/database"
 	"go-fiber3/models"
 
-	//"go-fiber3/seeders"
-
 	"github.com/gofiber/fiber/v2"
 	"github.com/joho/godotenv"
 )
