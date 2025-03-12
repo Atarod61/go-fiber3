@@ -9,8 +9,8 @@ import (
 
 func main() {
 	url := "https://panel.asanak.com/webservice/v1rest/sendsms"
-	str := "username=989xxxxx&password=xxxxx&" +
-		"source=9821xxxxxxx&destination=xxxxxxx&message=hello"
+	str := "username=xxxxxxxxx&password=xxxxxxxx" +
+		"source=98xxxxxxxx&destination=98xxxxxx&message=hello"
 	payload := strings.NewReader(str)
 
 	// ایجاد درخواست HTTP و بررسی ارور
